@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload Image</title>
+
+	<style>
+	input, input[type=file]{
+ 		 background-color: #4CAF50;
+  		border: none;
+  		color: white;
+  		padding: 15px 32px;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-size: 16px;
+		border-radius: 5px;
+ 		 margin: 4px 2px;
+ 		 cursor: pointer;
+  		-webkit-transition-duration: 0.4s; /* Safari */
+  		transition-duration: 0.4s;
+		}
+
+
+	input:hover {
+  	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+	#box1{
+		margin-top: 100px;
+  		margin-bottom: 100px;
+  		margin-right: 100px;
+  		margin-left: 100px;
+	}
+</style>	
+
+  </head>
+  <body>
+  
+	{% if msg %}
+    <h1><div style="text-align:center;">{{ msg }}</div></h1> 
+    {% endif %}
+    
+    <h1><div style="text-align:center;">Upload new File</div></h1>
+    
+  	<center>
+	<form method="POST" enctype=multipart/form-data>
+		<input type=file name=file> 
+         	<br><br><input type=submit value=Upload>
+	</form>
+	</center>
+
+	<h1>Result:</h1>
+    {% if img_src %}
+    <div style="text-align:center;"> <img src="{{ img_src }}"></div>	
+    {% endif %}
+    
+    {% if extracted_text %}
+      <h2> The extracted text from the image above is: </h2> <div id="box1"><font size = "4"><div style="text-align: justify; text-justify: inter-word;"> 
+				{{ extracted_text }} </div> </font></div>
+    
+    {% else %}
+      <h3>The extracted text will be displayed here</h3>
+    {% endif %}
+ </body>
+</html>
+    
